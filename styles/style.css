@@ -1,0 +1,17 @@
+#gallowsSection {
+    border: 1px solid #000;
+    margin-bottom: 20px;
+}
+#strikesSection {
+    border: 1px solid #000;
+    margin-bottom: 20px;
+}
+#wordSection {
+    border: 1px solid #000;
+    margin-bottom: 20px;
+    font-size: 40px;
+}
+#guessSection {
+    border: 1px solid #000;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hangman!</title>
+        <link rel="stylesheet" href="styles/style.css">
+    </head>
+    <body>
+        <div id="gallowsSection">
+            <img id="gallowsImage" src="images/strike-0.png" />
+        </div>
+        <div id="strikesSection"></div>
+        <div id="wordSection"></div>
+        <div id="guessSection">
+            <form onsubmit="processGuess(event)">
+                <input id="guessLetter" name="guessLetter" value="" type="text" placeholder="Guess letter ..." />
+                <button type="submit">Guess</button>
+            </form>
+        </div>
+
+        <script src= "scripts/script.js"></script>
+    </body>
+</html>
