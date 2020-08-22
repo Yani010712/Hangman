@@ -19,8 +19,15 @@ drawWordProgress(); // run this now, to draw the empty word at the start of the 
 function drawStrikeLetters() {
     // your DOM manipulation code here
     // should create a String from strikeLetters and put that into the content of some element.
+    
+     const strikeLetterString = strikeLetters.join(" ");
 
-    console.log("---- drawStrikeLetters")
+    let wrongGuesses = document.getElementById("wrongGuesses");
+    wrongGuesses.innerHTML = strikeLetterString;
+    let striksLeft = document.getElementById("striksLeft");
+    striksLeft.innerHTML = maxStrikes - strikes;
+
+    
 }
 
 // Manipulates the DOM to write the successfully guessed letters of the word, replacing them with dashes if not yet guessed
@@ -38,13 +45,13 @@ function drawWordProgress() {
             auxWord += "-";
         }
     }
-
-    console.log("---- drawWordProgress")
-    console.log(auxWord);
-
     const elem = document.getElementById("wordSection");
     elem.innerHTML = auxWord;
-    console.log(elem);
+
+    if(auxWord === word){
+        alert("Player 2 wins");
+    }
+    
 }
 
 // Manipulates the DOM to update the image of the gallows for the current game state.
@@ -55,23 +62,23 @@ function drawGallows() {
     const image = document.getElementById("gallowsImage");
     image.src = "images/strike-" + strikes + ".png";
 
-    console.log("---- drawGallows")
 }
 
-function updateGame(guessWord) {
+function updateGame(guessLetter) {
 
     let isLetterOnWord = false;
 
     for(let i=0; i < word.length; i++) {
-        if (word[i] === guessWord) {
+        if (word[i] === guessLetter) {
            revealedLetters[i] = true;
            isLetterOnWord = true;
         }
     }
 
-    if (isLetterOnWord === false) {
+    if (!isLetterOnWord) {
         // Strike
-        strikes ++; // strikes = strikes + 1;
+        strikeLetters[strikes] = guessLetter;
+        strikes ++; 
     }
 }
 
@@ -79,25 +86,30 @@ function updateGame(guessWord) {
 function processGuess(event) {
     event.preventDefault();
 
-    console.log("---- processGuess")
+    const elem = document.getElementById("guessLetter");
 
-    let guess = document.getElementById("guessLetter").value.toUpperCase(); // the value of the <form>'s <input> element, toUpperCase()!
-    console.log(guess);
+    let guess = elem.value.toUpperCase(); // the value of the <form>'s <input> element, toUpperCase()!
+
+    elem.value = "";
+
+    if(guess === ""){
+        alert("Enter a letter to guess");
+        return false;
+    }
 
     updateGame(guess);
-
-
-
     drawWordProgress();
     drawStrikeLetters();
     drawGallows();
 
 
     if (strikes < maxStrikes) {
-        // game logic goes here
+    
     } else {
         alert("The game is over!");
     } 
-
     return false;
 }
+
+const form = document.getElementById("form");
+form.addEventListener("submit", processGuess);

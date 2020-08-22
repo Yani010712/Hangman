@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Hangman!</title>
+        <title>Hangman</title>
         <link rel="stylesheet" href="styles/style.css">
     </head>
     <body>
-        <div id="gallowsSection">
-            <img id="gallowsImage" src="images/strike-0.png" />
+        <div>
+            <h1>HANGMAN</h1>
         </div>
-        <div id="strikesSection"></div>
-        <div id="wordSection"></div>
-        <div id="guessSection">
-            <form onsubmit="processGuess(event)">
-                <input id="guessLetter" name="guessLetter" value="" type="text" placeholder="Guess letter ..." />
-                <button type="submit">Guess</button>
-            </form>
-        </div>
+        <div id="left-side"> 
+            <div id="gallowsSection">
+                <img id="gallowsImage" src="images/strike-0.png" />
+            </div>
 
+        </div>
+        
+        <div id="right-side">
+
+            <div id="wordSection"></div>
+            <div id="guessSection">
+                <form id="form">
+                    <input id="guessLetter" type="text" maxlength="1" autocomplete="off" placeholder="Guess letter ..." />
+                    <button type="submit">Guess</button>
+                </form>
+            </div>
+            <div id="strikesSection">
+                <h3>Wrong guesses: <span id="wrongGuesses"></span></h3>
+                <hr>
+                <h3>Strikes left: <span id="striksLeft"></span></h3>
+    
+            </div>
+            
+        </div>
         <script src= "scripts/script.js"></script>
     </body>
 </html>

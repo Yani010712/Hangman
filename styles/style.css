@@ -1,5 +1,4 @@
 #gallowsSection {
-    border: 1px solid #000;
     margin-bottom: 20px;
 }
 #strikesSection {
@@ -7,11 +6,25 @@
     margin-bottom: 20px;
 }
 #wordSection {
-    border: 1px solid #000;
+    border: 1px solid #000; 
     margin-bottom: 20px;
     font-size: 40px;
 }
 #guessSection {
-    border: 1px solid #000;
     margin-bottom: 20px;
+}
+
+h1{
+    text-align: center;
+}
+
+#left-side {
+    width: 20%;
+    float: left;  
+}
+
+#right-side {
+    float: left;
+    width: 50%;
+    margin-left: 150px;
 }
